@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>A1 - Basic Test Plan</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    </head>
+
+    <body>
+
+        <div class="container-fluid bg-primary">
+            <div class="row bg-white py-2 px-5 small text-dark text-opacity-50">
+                NBCC-ITPA:SJ-SYST1038-Quality Assurance Testing
+            </div>
+            <div class="row bg-white border py-5 px-5">
+                <h1>Test Plan: Function <span class="fst-italic">evaluateMarks</span></h1>
+                <h5 class="fw-normal">Suite of tests designed to determine if the function <span class="fst-italic">evaluateMarks</span> is implemented correctly.</h5>
+            </div>
+
+            <div class="container bg-dark bg-opacity-10 font-monospace text-white py-5 px-5">
+                <div class="py-3 fw-bolder">Specification of the function to be tested</div>
+                <div>/** </div>
+                <div>* Determines whether a student has passed or failed a course.</div>
+                <div>* To pass, both of the following conditions must be true:</div>
+                <div>* (a) the average mark is not less than the stated minimum average mark; AND</div>
+                <div>* (b) each individual mark is not less than the specified minimum individual mark.</div>
+                <div>* @param {array of number} marks an array of marks, each in the range [0,100]</div>
+                <div>* @param {number} minAverage the required minimum for the average of the marks</div>
+                <div>* @param {number} minIndividual the required minimum for each individual mark</div>
+                <div>* @returns {string} one of the following messages:</div>
+                <div>*&nbsp;&nbsp;&nbsp;&nbsp;"PASS"</div>
+                <div>*&nbsp;&nbsp;&nbsp;&nbsp;"FAIL: average too low"</div>
+                <div>*&nbsp;&nbsp;&nbsp;&nbsp;"FAIL: individual mark too low"</div>
+                <div>*&nbsp;&nbsp;&nbsp;&nbsp;"BADINPUT: must be at least one mark"</div>
+                <div>*&nbsp;&nbsp;&nbsp;&nbsp;"BADINPUT: each mark must be in the range [0,100]</div>
+                <div>*&nbsp;&nbsp;&nbsp;&nbsp;"BADINPUT: minimum average parameter must be in the range [0,100]"</div>
+                <div>*&nbsp;&nbsp;&nbsp;&nbsp;"BADINPUT: minimum individual parameter must be in the range [0,100]"</div>
+                <div>*/</div>
+                <div>function <span class="fw-bolder">evaluateMarks</span>(marks, minAverage, minIndividual) {</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;// to be implemented</div>
+                <div>}</div>
+            </div>
+        </div>
+
+        <div class="container bg-light py-5">
+            <div class="row py-5 px-5 justify-content-center">
+                <!-- <hr> -->
+                <div class="text-dark fs-1 text-center fw-bolder">Test Cases</div>
+                <div class="fs-5 text-center">Instructions attempting to illuminate if the function works properly</div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-11 bg-white border-start border-4 border-success rounded-3 py-5 px-5 gy-5">
+                    <h2><span class="badge rounded-pill bg-success">TestID-EvaluateMarks#001</span></h2>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Expected result</div>
+                        <div class="fs-2 fw-bolder">"PASS"</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Inputs</div>
+                        <div class="fs-5">Marks: [55, 90, 70], minAverage: 60, minIndividual: 50</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Description</div>
+                        <div class="fs-5">The average of the marks is greater than required minimum, and all individual marks are greater than the minimal specified.</div>
+                    </div>
+                </div>
+
+                <div class="col-11 bg-white border-start border-4 border-warning rounded-3 py-5 px-5 gy-5">
+                    <h2><span class="badge rounded-pill bg-warning">TestID-EvaluateMarks#002</span></h2>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Expected result</div>
+                        <div class="fs-2 fw-bolder">"FAIL: average too low"</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Inputs</div>
+                        <div class="fs-5">Marks: [<mark>60, 55, 60</mark>], minAverage: 60, minIndividual: 50</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Description</div>
+                        <div class="fs-5">All individual marks are greater than the minimal stated, but the average is less than the minimum average specified.</div>
+                    </div>
+                </div>
+
+                <div class="col-11 bg-white border-start border-4 border-warning rounded-3 py-5 px-5 gy-5">
+                    <h2><span class="badge rounded-pill bg-warning">TestID-EvaluateMarks#003</span></h2>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Expected result</div>
+                        <div class="fs-2 fw-bolder">"FAIL: individual mark too low"</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Inputs</div>
+                        <div class="fs-5">Marks: [<mark>49</mark>, 80, 80], minAverage: 60, minIndividual: 50</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Description</div>
+                        <div class="fs-5">The average of the marks is above the required minimum, but one of the individual marks is below the individual minimum.</div>
+                    </div>
+                </div>
+
+                <div class="col-11 bg-white border-start border-4 border-danger rounded-3 py-5 px-5 gy-5">
+                    <h2><span class="badge rounded-pill bg-danger">TestID-EvaluateMarks#004</span></h2>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Expected result</div>
+                        <div class="fs-2 fw-bolder">"BANDINPUT: must be at least one mark"</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Inputs</div>
+                        <div class="fs-5">Marks: [<mark>NULL, NULL, NULL</mark>], minAverage: 60, minIndividual: 50</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Description</div>
+                        <div class="fs-5">No marks are defined in the array, likelihood of program crash due to this bad input.</div>
+                    </div>
+                </div>
+
+                <div class="col-11 bg-white border-start border-4 border-danger rounded-3 py-5 px-5 gy-5">
+                    <h2><span class="badge rounded-pill bg-danger">TestID-EvaluateMarks#005</span></h2>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Expected result</div>
+                        <div class="fs-2 fw-bolder">"BANDINPUT: each mark must be in the range [0, 100]"</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Inputs</div>
+                        <div class="fs-5">Marks: [<mark>-5</mark>, 75, <mark>125</mark>], minAverage: 60, minIndividual: 50</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Description</div>
+                        <div class="fs-5">The array of marks has marks out of the range stated, likelihood of program crash due to this bad input.</div>
+                    </div>
+                </div>
+
+                <div class="col-11 bg-white border-start border-4 border-danger rounded-3 py-5 px-5 gy-5">
+                    <h2><span class="badge rounded-pill bg-danger">TestID-EvaluateMarks#006</span></h2>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Expected result</div>
+                        <div class="fs-2 fw-bolder">"BANDINPUT: minimum average parameter must be in the range [0, 100]"</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Inputs</div>
+                        <div class="fs-5">Marks: [85, 70, 100], minAverage: <mark>-10</mark>, minIndividual: 50</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Description</div>
+                        <div class="fs-5">The minimum average parameter is out of the range stated, likelihood of program crash due to this bad input.</div>
+                    </div>
+                </div>
+
+                <div class="col-11 bg-white border-start border-4 border-danger rounded-3 py-5 px-5 gy-5">
+                    <h2><span class="badge rounded-pill bg-danger">TestID-EvaluateMarks#007</span></h2>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Expected result</div>
+                        <div class="fs-2 fw-bolder">"BANDINPUT: minimum individual parameter must be in the range [0, 100]"</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Inputs</div>
+                        <div class="fs-5">Marks: [55, 90, 60], minAverage: 60, minIndividual: <mark>101</mark></div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Description</div>
+                        <div class="fs-5">The minimum individual parameter is out of the range stated, likelihood of program crash due to this bad input.</div>
+                    </div>
+                </div>
+
+                <div class="col-11 bg-white border-start border-4 border-danger rounded-3 py-5 px-5 gy-5">
+                    <h2><span class="badge rounded-pill bg-danger">TestID-EvaluateMarks#008</span></h2>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Expected result</div>
+                        <div class="fs-2 fw-bolder">"BANDINPUT: all values must be a number"</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Inputs</div>
+                        <div class="fs-5">Marks: [20, 100, <mark>ten</mark>], minAverage: <mark>sixty</mark>, minIndividual: 50</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Description</div>
+                        <div class="fs-5">The array of marks and minimum average have values in string format instead number, likelihood of program crash due to this bad input.</div>
+                    </div>
+                </div>
+
+                <div class="col-11 bg-white border-start border-4 border-info rounded-3 py-5 px-5 gy-5">
+                    <h2><span class="badge rounded-pill bg-info">TestID-EvaluateMarks#009</span></h2>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Expected result</div>
+                        <div class="fs-2 fw-bolder">"MISSPELLING: function call is badly spelled"</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Inputs</div>
+                        <div class="fs-5">function <mark>evaluate_Marks</mark>(marks, minAverage, minIndividual){}</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Description</div>
+                        <div class="fs-5">The function name does not follow the stated on the specification documentation.</div>
+                    </div>
+                </div>
+
+                <div class="col-11 bg-white border-start border-4 border-info rounded-3 py-5 px-5 gy-5">
+                    <h2><span class="badge rounded-pill bg-info">TestID-EvaluateMarks#010</span></h2>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Expected result</div>
+                        <div class="fs-2 fw-bolder">"MISSPELLING: function call is badly spelled"</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Inputs</div>
+                        <div class="fs-5">function evaluateMarks(<mark>minAverage</mark>, minIndividual, <mark>marks</mark>){}</div>
+                    </div>
+                    <div class="col-12 py-4 px-4">
+                        <div class="text-secondary text-uppercase">Description</div>
+                        <div class="fs-5">The parameters order does not follow the stated on the specification documentation.</div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end of the main containter -->
+
+          <div class="container-fluid bg-primary">
+            <div class="container bg-dark bg-opacity-10 py-5 px-4 text-white">
+                <div>Created by <span class="fw-bolder">Leonardo de Andrade</span></div>
+                <div class="small">leonardojdas@gmail.com</div>
+            </div>
+          </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </body>
+</html>
