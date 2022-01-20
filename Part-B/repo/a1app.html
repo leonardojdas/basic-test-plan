@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>QA - A1 App</title>
+        <style>
+            body{
+                width: 80%;
+                margin:auto;
+                font-size: 1.25em;
+                line-height: 1.4;
+            }
+
+            input {
+                font-size: 1.1em;
+            }
+
+            .inputLabel {
+                width: 50%;
+                float: left;
+            }
+
+            .inputItem {
+                clear: left;
+            }
+
+            button {
+                margin-top: 20px;
+                font-size: 1.25em;
+            }
+
+            #result {
+                margin-top: 20px;
+                border: thin dashed blue;
+                background-color: lightblue;
+                font-size: 1.25em;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                document.querySelector("#showResultButton").addEventListener("click", showResult);
+            };
+
+            function showResult() {
+                let marks = getMarks();
+                let minAverage = document.querySelector("#minAverageInput").value;
+                let minIndividual = document.querySelector("#minIndividualInput").value;
+
+                let result = evaluateMarks(marks, minAverage, minIndividual);
+                document.querySelector("#result").innerHTML = result;
+            }
+
+            function getMarks() {
+                let marksStr = document.querySelector("#marksInput").value;
+                let marksStrArr = marksStr.split(",");
+                let marks = [];
+                for (let i = 0; i < marksStrArr.length; i++) {
+                    marks.push(Number(marksStrArr[i]));
+                }
+                console.log(marks);
+                return marks;
+            }
+        </script>
+
+        <!-- import your implementation of evaluateMarks -->
+        <!-- <script src="EduardoAmorim.js"></script> -->
+        <script src="scripts/LeonardoDeAndrade.js"></script>
+    </head>
+    <body>
+        <h1>Evaluate Marks</h1>
+        
+        <div class="inputItem">
+            <div class="inputLabel">
+                Enter the marks separated by commas.
+            </div>
+            <div class="inputField">
+                <input id="marksInput" />
+            </div>
+        </div>
+        <div class="inputItem">
+            <div class="inputLabel">Enter the minimum average required.</div>
+            <div class="inputField">
+                <input id="minAverageInput" type="number" />
+            </div>
+        </div>
+        <div class="inputItem">
+            <div class="inputLabel">
+                Enter the minimum required for each mark.
+            </div>
+            <div class="inputField">
+                <input id="minIndividualInput" type="number" />
+            </div>
+        </div>
+        <button id="showResultButton">Show Result</button>
+        <div id="result"></div>
+    </body>
+</html>
